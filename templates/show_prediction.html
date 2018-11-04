@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{%block title %}
+Sleep Prediction -- Welcome
+{% endblock %}
+
+{% block content %}
+
+  <article>
+    <header>
+      <h1>Welcome</h1>
+        <p>Sleep Prediction App.</p>
+    </header>
+    <section>
+      <h2>Prediction for {{today}}</h2>
+      <p>Steps: {{steps}}</p>
+      <p>Mean Heart Rate: {{mean_rate}}</p>
+      <p>Std. dev of Heart Rate: {{sd_rate}}</p>
+      <p>Last night's deep sleep %: {{last_night}}</p>
+      <p>Prediction: {{pred}}</p>
+
+  </article>
+{% endblock %}

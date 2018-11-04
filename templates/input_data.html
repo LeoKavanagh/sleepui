@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+Sleep -- Predict Deep Sleep %
+{% endblock %}
+
+{% block content %}
+  <section>
+    <h1>Get a prediction</h1>
+      <form action="" method="post">
+        <article>
+        <p> Steps: <input type="number" name="steps", step="any"> </p>
+        <p> Mean Heart Rate  <input type="number" name="mean_rate", step="any"> </p>
+        <p> Std. dev of Heart Rate  <input type="number" name="sd_rate", step="any"> </p>
+        <p> Last Night's Deep Sleep %:  <input type="number" name="last_night", step="any"> </p>
+        <p><button type="submit">Submit</button></p>
+        </article>
+      </form>
+ </section>
+{% endblock %}
+
+<!-- 
+We don't want to have a sidebar on this page,
+so we overwrite the one from base.html with nothing
+-->
+{% block sidebar %}
+{% endblock %}

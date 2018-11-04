@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{%block title %}
+Sleep Prediction -- Welcome
+{% endblock %}
+
+{% block content %}
+
+  <article>
+    <header>
+      <h1>Welcome</h1>
+        <p>Sleep Prediction App.</p>
+    </header>
+    <section>
+      <h2>Recently Added</h2>
+      {% if latest_pred %}
+        <p>Latest deep sleep prediction: {{latest_pred[-1]}}</p>
+      {% else %}
+        No predictions logged.
+      {% endif %}
+    </section>
+
+      <h2>Sleep</h2>
+        <p>The model in production uses number of steps, mean heart rate and standard deviation of heart rate for the day in question, as well as last night's deep sleep percentage to estimate tonights deep sleep percentage. We're defining deep sleep percentage to be the simple ratio of minutes in the deep sleep state to minutes in the awake state as defined by either Fitbit or Sleep As Android.</p>
+    </section>
+  </article>
+{% endblock %}
