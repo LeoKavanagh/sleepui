@@ -7,15 +7,16 @@ app = Flask(__name__)
 today = dt.date.today().strftime('%Y-%m-%d')
 latest_pred = []
 
-def deep_sleep_pct(steps, mean_rate, sd_rate, last_night):
 
-    b0 = 0.0
-    b1 = 1.0
-    b2 = 2.0
-    b3 = 3.0
-    b4 = 4.0
+def deep_sleep_pct(steps, mean_rate, sd_rate, dsp_lag):
 
-    return b0 + b1 * steps + b2 * mean_rate + b3 * sd_rate + b4 * last_night
+    b0 = -0.1176
+    b1 = 0.00
+    b2 = 0.048
+    b3 = -0.0029
+    b4 = 0.2040
+
+    return b0 + b2 * mean_rate + b3 * sd_rate + b4 * dsp_lag
 
 def log_prediction(pred):
     latest_pred.append(pred)
@@ -34,7 +35,7 @@ def predict():
         pred = deep_sleep_pct(float(data['steps']),
                                   float(data['mean_rate']),
                                   float(data['sd_rate']),
-                                  float(data['last_night']))
+                                  float(data['dsp_lag']))
         data['pred'] = pred
         # Log to the 'database' so that we can show something in the if statement
         # in the index.html template
@@ -45,10 +46,11 @@ def predict():
                                steps=float(data['steps']),
                                mean_rate=float(data['mean_rate']),
                                sd_rate=float(data['sd_rate']),
-                               last_night=float(data['last_night']),
+                               dsp_lag=float(data['dsp_lag']),
                                pred=float(data['pred']))
 
     return render_template('input_data.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
