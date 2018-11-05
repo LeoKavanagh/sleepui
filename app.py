@@ -11,7 +11,7 @@ latest_pred = []
 def deep_sleep_pct(steps, mean_rate, sd_rate, dsp_lag):
 
     # fitbit - Sleep as Android adjustment
-    mean_rate /= 3
+    dsp_lag /= 3
 
     b0 = -0.0343
     b1 = 0.00
